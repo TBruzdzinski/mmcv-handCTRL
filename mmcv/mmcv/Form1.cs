@@ -18,6 +18,12 @@ namespace mmcv
         private Capture capture;        //takes images from camera as image frames
         private bool captureInProgress;
 
+        //FPS support
+        private long tickCouner;
+        private int frameCounter = 0;
+        private int FPS = 0;
+        //end.
+
         public Form1()
         {
             InitializeComponent();
@@ -30,7 +36,24 @@ namespace mmcv
         private void ProcessFrame(object sender, EventArgs arg)
         {
             Image<Bgr, Byte> ImageFrame = capture.QueryFrame();
-            imageBox1.Image = ImageFrame; 
+
+            addFPS(ImageFrame, 10, 20);
+
+            imageBox1.Image = ImageFrame;
+        }
+
+        private void addFPS(Image<Bgr, Byte> ImageFrame, int x, int y)
+        {
+            frameCounter++;
+            long seconds = DateTime.Now.Ticks / TimeSpan.TicksPerSecond;
+            if (tickCouner != seconds)
+            {
+                FPS = frameCounter;
+                tickCouner = seconds;
+                frameCounter = 0;
+            }
+            MCvFont font = new MCvFont(Emgu.CV.CvEnum.FONT.CV_FONT_HERSHEY_PLAIN, 1, 1);
+            ImageFrame.Draw("FPS: " + FPS, ref font, new Point(x, y), new Bgr(Color.Black));
         }
 
         private void ReleaseData()
