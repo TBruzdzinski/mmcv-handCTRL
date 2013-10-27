@@ -35,14 +35,17 @@ namespace mmcv
         //------------------------------------------------------------------------------//
         private void ProcessFrame(object sender, EventArgs arg)
         {
-            Image<Bgr, Byte> ImageFrame = capture.QueryFrame();
+            Image<Bgr, Byte> imageFrame=null;
+            while (imageFrame == null)
+            {
+                imageFrame = capture.QueryFrame();
+            }
+            addFPS(imageFrame, 10, 30);
 
-            addFPS(ImageFrame, 10, 20);
-
-            imageBox1.Image = ImageFrame;
+            imageBox1.Image = imageFrame;
         }
 
-        private void addFPS(Image<Bgr, Byte> ImageFrame, int x, int y)
+        private void addFPS(Image<Bgr, Byte> imageFrame, int x, int y)
         {
             frameCounter++;
             long seconds = DateTime.Now.Ticks / TimeSpan.TicksPerSecond;
@@ -52,8 +55,9 @@ namespace mmcv
                 tickCouner = seconds;
                 frameCounter = 0;
             }
-            MCvFont font = new MCvFont(Emgu.CV.CvEnum.FONT.CV_FONT_HERSHEY_PLAIN, 1, 1);
-            ImageFrame.Draw("FPS: " + FPS, ref font, new Point(x, y), new Bgr(Color.Black));
+
+            MCvFont font = new MCvFont(Emgu.CV.CvEnum.FONT.CV_FONT_HERSHEY_TRIPLEX, 1, 1);
+            imageFrame.Draw("FPS: " + FPS, ref font, new Point(x, y), new Bgr(Color.Green));
         }
 
         private void ReleaseData()

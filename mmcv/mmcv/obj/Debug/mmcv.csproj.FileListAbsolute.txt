@@ -18,7 +18,6 @@ D:\MMCV\mmcv\mmcv\bin\Debug\x64\opencv_objdetect290.dll
 D:\MMCV\mmcv\mmcv\bin\Debug\x64\opencv_video290.dll
 D:\MMCV\mmcv\mmcv\bin\Debug\mmcv.exe
 D:\MMCV\mmcv\mmcv\bin\Debug\mmcv.pdb
-D:\MMCV\mmcv\mmcv\obj\Debug\mmcv.csprojResolveAssemblyReference.cache
 D:\MMCV\mmcv\mmcv\obj\Debug\mmcv.Form1.resources
 D:\MMCV\mmcv\mmcv\obj\Debug\mmcv.Properties.Resources.resources
 D:\MMCV\mmcv\mmcv\obj\Debug\mmcv.csproj.GenerateResource.Cache
@@ -51,3 +50,4 @@ C:\Users\Kamil\Documents\Visual Studio 2010\Projects\mmcv-handCTRL\mmcv\mmcv\obj
 C:\Users\Kamil\Documents\Visual Studio 2010\Projects\mmcv-handCTRL\mmcv\mmcv\obj\Debug\mmcv.Properties.Resources.resources
 C:\Users\Kamil\Documents\Visual Studio 2010\Projects\mmcv-handCTRL\mmcv\mmcv\obj\Debug\GenerateResource.read.1.tlog
 C:\Users\Kamil\Documents\Visual Studio 2010\Projects\mmcv-handCTRL\mmcv\mmcv\obj\Debug\GenerateResource.write.1.tlog
+D:\MMCV\mmcv\mmcv\obj\Debug\mmcv.csprojResolveAssemblyReference.cache
