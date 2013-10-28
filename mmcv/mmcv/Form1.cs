@@ -27,6 +27,7 @@ namespace mmcv
         public Form1()
         {
             InitializeComponent();
+
         }
         //------------------------------------------------------------------------------//
         //Process Frame() below is our user defined function in which we will create an EmguCv 
@@ -40,9 +41,37 @@ namespace mmcv
             {
                 imageFrame = capture.QueryFrame();
             }
+
+            imageFrame = imageFrame.Flip(Emgu.CV.CvEnum.FLIP.HORIZONTAL);
+
+            Image<Gray, byte> grayFrame = imageFrame
+               .Convert<Gray, byte>()                               //to gray image
+               .ThresholdBinary(new Gray(127), new Gray(255))       //first treshold to get only part of interesting pixels
+               .SmoothGaussian(11)                                  //gaussian filter to make smooth black & white pixels on edges
+               .ThresholdBinary(new Gray(127), new Gray(255))       //once again treshold to make nice edges (thanks to gauss)
+               .Dilate(3);                                          //enlarge dots
+
+            Image<Gray, byte> finalFrame = new Image<Gray, byte>(grayFrame.Width, grayFrame.Height, new Gray(255));
+
+            finalFrame.Draw(
+                grayFrame
+                .FindContours(Emgu.CV.CvEnum.CHAIN_APPROX_METHOD.CV_LINK_RUNS, Emgu.CV.CvEnum.RETR_TYPE.CV_RETR_TREE),
+                    new Gray(0), new Gray(255), 1, 2, new Point(0, 0)
+            );
+
+            imageFrame.Draw(
+                grayFrame
+                .FindContours(Emgu.CV.CvEnum.CHAIN_APPROX_METHOD.CV_LINK_RUNS, Emgu.CV.CvEnum.RETR_TYPE.CV_RETR_TREE),
+                    new Bgr(Color.White), new Bgr(Color.Black), 1, 2, new Point(0, 0)
+            );
+
             addFPS(imageFrame, 10, 30);
 
-            imageBox1.Image = imageFrame;
+            if (finalFrame != null)
+            {
+                imageBox2.Image = finalFrame;
+                imageBox1.Image = imageFrame;
+            }
         }
 
         private void addFPS(Image<Bgr, Byte> imageFrame, int x, int y)
@@ -100,6 +129,11 @@ namespace mmcv
 
                 captureInProgress = !captureInProgress;
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
