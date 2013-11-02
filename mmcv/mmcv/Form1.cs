@@ -44,6 +44,7 @@ namespace mmcv
 
             imageFrame = imageFrame.Flip(Emgu.CV.CvEnum.FLIP.HORIZONTAL);
 
+            //--just play with contour display--
             Image<Gray, byte> grayFrame = imageFrame
                .Convert<Gray, byte>()                               //to gray image
                .ThresholdBinary(new Gray(127), new Gray(255))       //first treshold to get only part of interesting pixels
@@ -53,25 +54,25 @@ namespace mmcv
 
             Image<Gray, byte> finalFrame = new Image<Gray, byte>(grayFrame.Width, grayFrame.Height, new Gray(255));
 
-            finalFrame.Draw(
-                grayFrame
-                .FindContours(Emgu.CV.CvEnum.CHAIN_APPROX_METHOD.CV_LINK_RUNS, Emgu.CV.CvEnum.RETR_TYPE.CV_RETR_TREE),
-                    new Gray(0), new Gray(255), 1, 2, new Point(0, 0)
-            );
+            Contour<Point> contours = grayFrame
+                .FindContours(Emgu.CV.CvEnum.CHAIN_APPROX_METHOD.CV_LINK_RUNS, Emgu.CV.CvEnum.RETR_TYPE.CV_RETR_TREE);
 
-            imageFrame.Draw(
-                grayFrame
-                .FindContours(Emgu.CV.CvEnum.CHAIN_APPROX_METHOD.CV_LINK_RUNS, Emgu.CV.CvEnum.RETR_TYPE.CV_RETR_TREE),
-                    new Bgr(Color.White), new Bgr(Color.Black), 1, 2, new Point(0, 0)
-            );
+            if (contours != null)
+            {
+                finalFrame.Draw(
+                    contours, new Gray(0), new Gray(255), 1, 2, new Point(0, 0)
+                );
+
+                imageFrame.Draw(
+                    contours, new Bgr(Color.White), new Bgr(Color.Black), 1, 2, new Point(0, 0)
+                );
+            }
+            //--end--
 
             addFPS(imageFrame, 10, 30);
 
-            if (finalFrame != null)
-            {
-                imageBox2.Image = finalFrame;
-                imageBox1.Image = imageFrame;
-            }
+            imageBox2.Image = finalFrame;
+            imageBox1.Image = imageFrame;
         }
 
         private void addFPS(Image<Bgr, Byte> imageFrame, int x, int y)

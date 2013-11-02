@@ -52,7 +52,7 @@
             this.panel1.Controls.Add(this.splitContainer1);
             this.panel1.Location = new System.Drawing.Point(6, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(544, 264);
+            this.panel1.Size = new System.Drawing.Size(544, 226);
             this.panel1.TabIndex = 0;
             // 
             // splitContainer1
@@ -70,7 +70,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.imageBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(544, 264);
+            this.splitContainer1.Size = new System.Drawing.Size(544, 226);
             this.splitContainer1.SplitterDistance = 271;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 0;
@@ -82,7 +82,7 @@
             this.imageBox1.FunctionalMode = Emgu.CV.UI.ImageBox.FunctionalModeOption.Minimum;
             this.imageBox1.Location = new System.Drawing.Point(0, 0);
             this.imageBox1.Name = "imageBox1";
-            this.imageBox1.Size = new System.Drawing.Size(271, 264);
+            this.imageBox1.Size = new System.Drawing.Size(271, 226);
             this.imageBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imageBox1.TabIndex = 6;
             this.imageBox1.TabStop = false;
@@ -94,7 +94,7 @@
             this.imageBox2.FunctionalMode = Emgu.CV.UI.ImageBox.FunctionalModeOption.Minimum;
             this.imageBox2.Location = new System.Drawing.Point(0, 0);
             this.imageBox2.Name = "imageBox2";
-            this.imageBox2.Size = new System.Drawing.Size(271, 264);
+            this.imageBox2.Size = new System.Drawing.Size(271, 226);
             this.imageBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imageBox2.TabIndex = 7;
             this.imageBox2.TabStop = false;
@@ -104,7 +104,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.button1);
-            this.panel2.Location = new System.Drawing.Point(6, 276);
+            this.panel2.Location = new System.Drawing.Point(6, 238);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(544, 183);
             this.panel2.TabIndex = 1;
@@ -124,7 +124,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 465);
+            this.ClientSize = new System.Drawing.Size(556, 427);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
