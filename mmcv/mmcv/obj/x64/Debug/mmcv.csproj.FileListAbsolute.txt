@@ -1,4 +1,3 @@
-C:\Users\Kamil\Documents\Visual Studio 2010\Projects\mmcv-handCTRL\mmcv\mmcv\bin\x64\Debug\mmcv.exe.config
 C:\Users\Kamil\Documents\Visual Studio 2010\Projects\mmcv-handCTRL\mmcv\mmcv\bin\x64\Debug\Emgu.CV.dll
 C:\Users\Kamil\Documents\Visual Studio 2010\Projects\mmcv-handCTRL\mmcv\mmcv\bin\x64\Debug\Emgu.CV.UI.dll
 C:\Users\Kamil\Documents\Visual Studio 2010\Projects\mmcv-handCTRL\mmcv\mmcv\bin\x64\Debug\Emgu.Util.dll
@@ -16,6 +15,7 @@ C:\Users\Kamil\Documents\Visual Studio 2010\Projects\mmcv-handCTRL\mmcv\mmcv\bin
 C:\Users\Kamil\Documents\Visual Studio 2010\Projects\mmcv-handCTRL\mmcv\mmcv\bin\x64\Debug\x64\opencv_ml290.dll
 C:\Users\Kamil\Documents\Visual Studio 2010\Projects\mmcv-handCTRL\mmcv\mmcv\bin\x64\Debug\x64\opencv_objdetect290.dll
 C:\Users\Kamil\Documents\Visual Studio 2010\Projects\mmcv-handCTRL\mmcv\mmcv\bin\x64\Debug\x64\opencv_video290.dll
+C:\Users\Kamil\Documents\Visual Studio 2010\Projects\mmcv-handCTRL\mmcv\mmcv\bin\x64\Debug\mmcv.exe.config
 C:\Users\Kamil\Documents\Visual Studio 2010\Projects\mmcv-handCTRL\mmcv\mmcv\bin\x64\Debug\mmcv.exe
 C:\Users\Kamil\Documents\Visual Studio 2010\Projects\mmcv-handCTRL\mmcv\mmcv\bin\x64\Debug\mmcv.pdb
 C:\Users\Kamil\Documents\Visual Studio 2010\Projects\mmcv-handCTRL\mmcv\mmcv\obj\x64\Debug\ResolveAssemblyReference.cache
