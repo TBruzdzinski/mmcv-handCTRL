@@ -5,7 +5,7 @@ using System.Text;
 
 namespace mmcv
 {
-    class Hand
+    public class Hand
     {
         private int fingersCount;
         private int height;

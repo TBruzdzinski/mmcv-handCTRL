@@ -44,10 +44,16 @@ namespace mmcv
         private Ellipse ellip;
         //end.
 
+        private Hand hand = null;
+
+        private int[] fingerCountArray = new int[5];
+
         public Form1()
         {
             InitializeComponent();
 
+            for (int i = 0; i < fingerCountArray.Length; i++)
+                fingerCountArray[i] = 0;
         }
 
 
@@ -93,7 +99,7 @@ namespace mmcv
 
                     Image<Gray, Byte> skin = getSkinOnImage(hsvFrame, Hsv_min, Hsv_max);
                     FindContourAndConvexHull(skin, imageFrame);
-                    Hand hand = ComputeHandInfo(imageFrame);
+                    hand = ComputeHandInfo(imageFrame);
 
                     if (hand != null)
                     {
@@ -288,6 +294,25 @@ namespace mmcv
             }
             #endregion
 
+            //Console.Write(fingerNumber + " | ");
+
+            for (int j = 1; j < fingerCountArray.Length; j++)
+            {
+                fingerCountArray[j - 1] = fingerCountArray[j];
+            }
+            fingerCountArray[fingerCountArray.Length - 1] = fingerNumber;
+
+            int[] tmpArr = new int[fingerCountArray.Length];
+            for (int k = 0; k < tmpArr.Length; k++)
+            {
+                tmpArr[k] = fingerCountArray[k];
+            }
+            Array.Sort(tmpArr);
+
+            fingerNumber = tmpArr[tmpArr.Length / 2];
+
+            Console.WriteLine(string.Join(",", fingerCountArray));
+
             //drawing the number of visible fingers:
             MCvFont font = new MCvFont(Emgu.CV.CvEnum.FONT.CV_FONT_HERSHEY_DUPLEX, 5d, 5d);
             imageFrame.Draw(fingerNumber.ToString(), ref font, new Point(50, 150), new Bgr(Color.White));
@@ -331,8 +356,6 @@ namespace mmcv
                 (double)minValue + (maxValue - minValue) * 40 / 100
             );
 
-            imageBox3.Image = partToCompute.ToBitmap();
-
             hsvImage = maskedImage.Convert<Hsv, Byte>() //tu powstaje jakiś "First chance of exception..."
                 .SmoothGaussian(5)
                 .Dilate(1)
@@ -340,7 +363,7 @@ namespace mmcv
                 .ThresholdBinary(new Rgb(127,127,127), new Rgb(255,255,255))
                 .Convert<Hsv, Byte>();
 
-            hsvImage.Draw(rangeOfInterest, new Hsv(255, 255, 255), 3);
+            //hsvImage.Draw(rangeOfInterest, new Hsv(255, 255, 255), 3);
         }
 
         private void addFPS(Image<Bgr, Byte> imageFrame, int x, int y)
@@ -444,6 +467,28 @@ namespace mmcv
         private void button5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public Hand getHand()
+        {
+            return hand;
+        }
+
+        public int GetFingerNumber()
+        {
+            if (hand != null)
+                return hand.FingersCount;
+            return 0;
+        }
+
+        public int FingerCount
+        {
+            get
+            {
+                if (hand != null)
+                    return hand.FingersCount;
+                return 0;
+            }
         }
     }
 }
